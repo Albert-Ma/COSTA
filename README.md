@@ -37,13 +37,33 @@ In this way, we can
 </p>
 
 
-<!-- ## Pre-training
+## Preparing Data
 
-- TODO -->
+Download the **Wikipedia** from [the website](https://dumps.wikimedia.org/enwiki/latest/enwiki-latest-pages-articles.xml.bz2) and extract the text with [`WikiExtractor.py`](https://github.com/attardi/wikiextractor), and then apply any necessary cleanup and filter the short texts.
+
+Download the two MS MARCO dense retrieval datasets from this [website](https://microsoft.github.io/msmarco/Datasets) and the two TREC 2019 Deep Learning Track datasets from this [website](https://microsoft.github.io/msmarco/TREC-Deep-Learning-2019).
+Since these two TREC datasets use the same training set and dev set as the two MS MARCO datasets, so just download the test files.
+Put these datasets on 
+```
+./data/marco-pas, ./data/marco-doc
+```
+
+
+
+
+## Pre-training
+Stay tuned! Come back soon!
+
+## Fine-tuning
+Our fine-tunning code is based on the [texttron](https://github.com/texttron/tevatron) toolkit.
+
+See [README.md](./scripts/msmarco-passage-ranking/README.md) for training on passage retrieval datasets.
+
+See [README.md](./scripts/msmarco-document-ranking/README.md) for training on document retrieval datasets.
+
 
 ## Fine-tuning Results
 
-Our fine-tunning code is based on the [texttron](https://github.com/texttron/tevatron) toolkit.
 
 | MS MARCO  Passage Retrieval  | MRR@10| Recall@1000 | Files |
 |---|:---:|:---:|:---:|
