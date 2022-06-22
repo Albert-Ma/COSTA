@@ -57,9 +57,9 @@ Stay tuned! Come back soon!
 ## Fine-tuning
 Our fine-tunning code is based on the [texttron](https://github.com/texttron/tevatron) toolkit.
 
-See [README.md](./scripts/msmarco-passage-ranking/README.md) for training on passage retrieval datasets.
+See [README.md](./scripts/msmarco-passage-ranking/README.md) for fine-tuning COSTA on passage retrieval datasets.
 
-See [README.md](./scripts/msmarco-document-ranking/README.md) for training on document retrieval datasets.
+See [README.md](./scripts/msmarco-document-ranking/README.md) for fine-tuning COSTA on document retrieval datasets.
 
 
 ## Fine-tuning Results
