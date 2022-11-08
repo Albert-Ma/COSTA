@@ -47,7 +47,6 @@ class DataArguments:
         default=12, metadata={"help": "number of proc used in dataset preprocess"}
     )
     train_n_passages: int = field(default=8)
-    k: int = field(default=1000000)
 
     encode_in_path: List[str] = field(default=None, metadata={"help": "Path to data to encode"})
     encoded_save_path: str = field(default=None, metadata={"help": "where to save the encode"})

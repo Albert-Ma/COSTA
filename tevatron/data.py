@@ -36,12 +36,6 @@ class TrainDataset(Dataset):
 
         self.data_args = data_args
         self.total_len = len(self.train_data)
-        
-        self.k = self.data_args.k
-        random.seed(1000)
-        start = int(random.random()*(self.total_len-self.k))
-        print(self.k, start)
-        self.train_data = self.train_data[start:start+self.k]
 
 
     def create_one_example(self, text_encoding: List[int], is_query=False):
@@ -56,55 +50,20 @@ class TrainDataset(Dataset):
         return item
 
     def __len__(self):
-        # return self.total_len
-        return self.k
-
-    # def __getitem__(self, item) -> [BatchEncoding, List[BatchEncoding]]:
-    #     group = self.train_data[item]
-    #     epoch = int(self.trainer.state.epoch)
-
-    #     _hashed_seed = hash(item + self.trainer.args.seed)
-
-    #     qry = group['query']
-    #     encoded_query = self.create_one_example(qry, is_query=True)
-
-    #     encoded_passages = []
-    #     group_positives = group['positives']
-    #     group_negatives = group['negatives']
-
-    #     pos_psg = group_positives[(_hashed_seed + epoch) % len(group_positives)]
-    #     encoded_passages.append(self.create_one_example(pos_psg))
-
-    #     negative_size = self.data_args.train_n_passages - 1
-    #     if len(group_negatives) < negative_size:
-    #         negs = random.choices(group_negatives, k=negative_size)
-    #     elif self.data_args.train_n_passages == 1:
-    #         negs = []
-    #     else:
-    #         _offset = epoch * negative_size % len(group_negatives)
-    #         negs = [x for x in group_negatives]
-    #         random.Random(_hashed_seed).shuffle(negs)
-    #         negs = negs * 2
-    #         negs = negs[_offset: _offset + negative_size]
-
-    #     for neg_psg in negs:
-    #         encoded_passages.append(self.create_one_example(neg_psg))
-
-    #     return encoded_query, encoded_passages
+        return self.total_len
 
     def __getitem__(self, item) -> [BatchEncoding, List[BatchEncoding]]:
-        qry = self.train_data['query'][item]
-        group_positives = self.train_data['positives'][item]
-        group_negatives = self.train_data['negatives'][item]
-        
+        group = self.train_data[item]
         epoch = int(self.trainer.state.epoch)
 
         _hashed_seed = hash(item + self.trainer.args.seed)
 
+        qry = group['query']
         encoded_query = self.create_one_example(qry, is_query=True)
 
         encoded_passages = []
-
+        group_positives = group['positives']
+        group_negatives = group['negatives']
 
         pos_psg = group_positives[(_hashed_seed + epoch) % len(group_positives)]
         encoded_passages.append(self.create_one_example(pos_psg))

@@ -37,6 +37,21 @@ In this way, we can
 </p>
 
 
+## Pre-trained models in the Huggingface 🤗
+We have uploaded COSTA pre-trained models to the Huggingface Hub, so you can easily use the COSTA models with [Huggingface/Transformers](https://github.com/huggingface/transformers) library.
+
+Model identifier in Huggingface Hub:
+- `xyma/COSTA-wiki`: The official COSTA model pre-trained on Wikipedia
+
+
+For example,
+```
+tokenizer = AutoTokenizer.from_pretrained("xyma/COSTA-wiki")
+model = AutoModel.from_pretrained("xyma/COSTA-wiki")
+```
+
+
+
 ## Preparing Data
 
 Download the **Wikipedia** from [the website](https://dumps.wikimedia.org/enwiki/latest/enwiki-latest-pages-articles.xml.bz2) and extract the text with [`WikiExtractor.py`](https://github.com/attardi/wikiextractor), and then apply any necessary cleanup and filter the short texts.
