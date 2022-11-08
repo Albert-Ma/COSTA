@@ -158,10 +158,17 @@ ndcg_cut_10            all     0.6260
 If you find our work useful, please consider citing our paper:
 
 ```
-@article{ma2022pre,
-  title={Pre-train a Discriminative Text Encoder for Dense Retrieval via Contrastive Span Prediction},
-  author={Ma, Xinyu and Guo, Jiafeng and Zhang, Ruqing and Fan, Yixing and Cheng, Xueqi},
-  journal={arXiv preprint arXiv:2204.10641},
-  year={2022}
+@inproceedings{ma2022costa,
+  author = {Ma, Xinyu and Guo, Jiafeng and Zhang, Ruqing and Fan, Yixing and Cheng, Xueqi},
+  title = {Pre-Train a Discriminative Text Encoder for Dense Retrieval via Contrastive Span Prediction},
+  year = {2022},
+  address = {New York, NY, USA},
+  url = {https://doi.org/10.1145/3477495.3531772},
+  doi = {10.1145/3477495.3531772},
+  pages = {848–858},
+  numpages = {11},
+  location = {Madrid, Spain},
+  series = {SIGIR '22}
 }
+
 ```
